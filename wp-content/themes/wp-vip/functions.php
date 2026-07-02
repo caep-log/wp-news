@@ -37,3 +37,22 @@ function mytheme_enqueue_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');
+
+function wp_vip_enqueue_assets() {
+    wp_enqueue_style(
+        'wp-vip-style',
+        get_stylesheet_uri(),
+        [],
+        wp_get_theme()->get('Version')
+    );
+
+    wp_enqueue_script(
+        'wp-vip-main',
+        get_template_directory_uri() . '/assets/js/main.js',
+        [],
+        wp_get_theme()->get('Version'),
+        true // Antes de </body>
+    );
+}
+
+add_action('wp_enqueue_scripts', 'wp_vip_enqueue_assets');

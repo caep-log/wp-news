@@ -16,48 +16,79 @@
 
 <header class="wp-vip-header">
     <div class="logo-site-title">
+        <button class="wp-vip-header-menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
         <h1>
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <?php bloginfo('name'); ?>
+                WP NEWS
             </a>
         </h1>
+        <button>
+            <i class="bi bi-search"></i>
+        </button>
     </div>
     <div class="wp-vip-header-menu-links">
         <div>
+            <h2 class="small-logo-site-title">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    WP NEWS
+                </a>
+            </h2>
         </div>
         <div class="wp-vip-header-menu-links__links">
-            <a href="">
+            <a href="/world">
                 <i class="bi bi-globe2"></i>
                 World
             </a>
-            <a href="">
+            <a href="/sports">
                 <i class="bi bi-cookie"></i>
                 Sports
             </a>
-            <a href="">
+            <a href="/economy">
                 <i class="bi bi-briefcase"></i>
                 Economy
             </a>
-            <a href="">
+            <a href="/technology">
                 <i class="bi bi-globe2"></i>
                 Technology
             </a>
-            <a href="">
-                <i class="bi bi-currency-bitcoin"></i>
-                Business
-            </a>
-            <a href="">
+            <a href="/science">
                 <i class="bi bi-flask"></i>
                 Science
             </a>
-            <button>
-                <i class="bi bi-chevron-down"></i>
-                More
-            </button>
+            <div class="dropdown">
+                <button>
+                    <i class="bi bi-chevron-down"></i>
+                    More
+                </button>
+                <div class="wp-vip-header-menu-links__links__more">
+                    <a href="/business">
+                        <i class="bi bi-currency-bitcoin"></i>
+                        Business
+                    </a>
+                    <a href="/health">
+                        <i class="bi bi-people"></i>
+                        Health
+                    </a>
+                    <a href="/entertainment">
+                        <i class="bi bi-camera"></i>
+                        Entertainment
+                    </a>
+                    <a href="/music">
+                        <i class="bi bi-music-note-beamed"></i>
+                        Music
+                    </a>
+                    <a href="/book">
+                        <i class="bi bi-book"></i>
+                        Books
+                    </a>
+                </div>
+            </div>
         </div>
         <div>
-            <button>Subscribe</button>
-            <button>Sign In</button>
+            <a href="/sign-up">Subscribe</a>
+            <a href="/sign-in">Sign In</a>
         </div>
-    </div>     
+    </div>
 </header>

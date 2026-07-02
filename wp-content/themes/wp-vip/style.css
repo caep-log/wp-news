@@ -8,6 +8,10 @@ Tested up to: 6.8
 Requires PHP: 8.3
 */
 
+#wpadminbar{
+    display: none !important;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -15,6 +19,7 @@ Requires PHP: 8.3
 }
 
 html, body{
+    margin-top: 0 !important;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -27,13 +32,21 @@ h1, h2, h3, h4, h5, h6{
     margin-bottom: 1rem;
 }
 
+h2, h3, h4, h5, h6{
+    margin-bottom: 0px;
+}
+
 a, button{
     font-size: 16px;
 }
 
+a, button > i {
+    font-size: 18px;
+}
+
 /* main components */
 
-.wp-vip-header, .wp-vip-main, .wp-vip-footer{
+.wp-vip-main, .wp-vip-footer{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -41,9 +54,31 @@ a, button{
 
 /* header */
 .wp-vip-header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
     flex-direction: column;
     margin-bottom: 1rem;
     border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.wp-vip-header.scroll{
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.wp-vip-header.scroll .logo-site-title{
+    display: none;
+}
+
+.wp-vip-header.scroll .wp-vip-header-menu-links{
+    margin-top: 0;
+}
+
+.logo-site-title, .wp-vip-header-menu-links{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo-site-title{
@@ -52,6 +87,23 @@ a, button{
     text-decoration: none;
     color: rgba(0,0,0,1);
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo-site-title > button {
+    display: none;
+    background: none;
+    border: none;
+}
+
+.logo-site-title > button > i {
+    font-size: 28px;
+}
+
+.logo-site-title > button:hover{
+    background-color: rgba(0,0,0,.1);
 }
 
 .logo-site-title > h1 > a{
@@ -70,10 +122,16 @@ a, button{
     flex-direction: row;
     justify-content: space-between;
     gap: 1rem;
-    margin: .5rem 0px 0px 0px;
+    margin-top: .5rem;
+}
+
+.wp-vip-header-menu-links.show{
+    display: flex;
 }
 
 .wp-vip-header-menu-links > div > a, button{
+    text-decoration: none;
+    color: rgba(0,0,0,1);
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +142,7 @@ a, button{
     transition: .3s all;
     cursor: pointer;
 }
-
+.dropdown:hover .wp-vip-header-menu-links__links__more > a:hover,
 .wp-vip-header-menu-links > div > a:hover, button:hover{
     background-color: rgba(0,0,0,.1);
 }
@@ -102,6 +160,42 @@ a, button{
 
 .wp-vip-header-menu-links__links > a:hover{
     text-decoration: underline;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.wp-vip-header-menu-links__links__more {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.wp-vip-header-menu-links__links__more.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .wp-vip-header-menu-links__links__more {
+    display: flex;
+    flex-direction: column;
+}
+
+.wp-vip-header-menu-links__links__more > a {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    transition: .3s all;
+    gap: .5rem;
 }
 
 /* main */
@@ -135,6 +229,13 @@ a, button{
     gap: 1rem;
 }
 
+.footer-social > a{
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    transition: .3s all;
+}
+
 .footer-menu-links{
     display: flex;
     flex-direction: column;
@@ -156,4 +257,62 @@ a, button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.small-logo-site-title{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: .3s all;
+    height: 100%;
+}
+
+.small-logo-site-title > a {
+    font-size: 24px;
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+}
+
+.small-logo-site-title > a:hover{
+    text-decoration: underline;
+}
+
+.small-logo-site-title.scroll{
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .wp-vip-header.scroll .logo-site-title{
+        display: flex !important;
+    }
+
+    .footer-menu{
+        flex-direction: column;
+    }
+
+    .wp-vip-header-menu-links, .wp-vip-header-menu-links__links{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .wp-vip-header-menu-links__links > a, button, div{
+        width: 100%;
+    }
+
+    .wp-vip-header-menu-links{
+        display: none;
+    }
+
+    .logo-site-title{
+        justify-content: space-between;
+        align-items: center;
+        height: 72px;
+    }
+
+    .logo-site-title > button {
+        display: inline-block;
+        width: 54px;
+        height: 54px;
+    }
 }

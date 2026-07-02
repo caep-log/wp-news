@@ -1,22 +1,31 @@
 <footer class="wp-vip-footer">
     <div class="footer-social">
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook.png" alt="Facebook" class="footer-social-icon">
+        <a href="/telegram" class="footer-social-link">
+            <i class="bi bi-wordpress"></i>
         </a>
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter.png" alt="Twitter" class="footer-social-icon">
+        <a href="/facebook" class="footer-social-link">
+            <i class="bi bi-facebook"></i>
         </a>
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram.png" alt="Instagram" class="footer-social-icon">
+        <a href="/x" class="footer-social-link">
+            <i class="bi bi-twitter-x"></i>
         </a>
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook.png" alt="Facebook" class="footer-social-icon">
+        <a href="/instagram" class="footer-social-link">
+            <i class="bi bi-instagram"></i>
         </a>
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter.png" alt="Twitter" class="footer-social-icon">
+        <a href="/linkedin" class="footer-social-link">
+            <i class="bi bi-linkedin"></i>
         </a>
-        <a href="" class="footer-social-link">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram.png" alt="Instagram" class="footer-social-icon">
+        <a href="/youtube" class="footer-social-link">
+            <i class="bi bi-youtube"></i>
+        </a>
+        <a href="/telegram" class="footer-social-link">
+            <i class="bi bi-telegram"></i>
+        </a>
+        <a href="/whatsapp" class="footer-social-link">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="/slack" class="footer-social-link">
+            <i class="bi bi-slack"></i>
         </a>
     </div>
     <div class="footer-menu">
