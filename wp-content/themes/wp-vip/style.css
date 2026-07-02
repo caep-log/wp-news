@@ -1,0 +1,159 @@
+/*
+Theme Name: WP VIP
+Author: WP IP
+Description: Demo Wordpress VIP theme for news
+Version: 1.0.0
+Requires at least: 6.8
+Tested up to: 6.8
+Requires PHP: 8.3
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'DM Serif Display', serif;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+a, button{
+    font-size: 16px;
+}
+
+/* main components */
+
+.wp-vip-header, .wp-vip-main, .wp-vip-footer{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* header */
+.wp-vip-header{
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo-site-title{
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    text-align: center;
+}
+
+.logo-site-title > h1 > a{
+    font-size: 3rem;
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    transition: .3s all;
+}
+
+.logo-site-title > h1 > a:hover{
+    text-decoration: underline;
+}
+
+.wp-vip-header-menu-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: .5rem 0px 0px 0px;
+}
+
+.wp-vip-header-menu-links > div > a, button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    height: 54px;
+    padding: 0px .5rem;
+    border: none;
+    transition: .3s all;
+    cursor: pointer;
+}
+
+.wp-vip-header-menu-links > div > a:hover, button:hover{
+    background-color: rgba(0,0,0,.1);
+}
+
+.wp-vip-header-menu-links__links{
+    display: flex;
+    flex-direction: row;
+}
+
+.wp-vip-header-menu-links__links > a {
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    transition: .3s all;
+}
+
+.wp-vip-header-menu-links__links > a:hover{
+    text-decoration: underline;
+}
+
+/* main */
+.wp-vip-main{
+    display: flex;
+    flex-direction: column;
+}
+
+/* footer */
+
+.wp-vip-footer{
+    display: flex;
+    flex-direction: column;
+}
+
+.wp-vip-footer > div {
+    border-top: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.footer-menu, .footer-copyright, .footer-menu, .footer-social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-social{
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-menu-links{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.footer-menu-link{
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+    transition: .3s all;
+}
+
+.footer-menu-link:hover{
+    text-decoration: underline;
+}
+
+.footer-site{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
