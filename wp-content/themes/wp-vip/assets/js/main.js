@@ -16,10 +16,20 @@ const headerContainer = document.querySelector('.wp-vip-header');
 if (menuMobileButton && menuMobileContainer) {
     menuMobileButton.addEventListener('click', () => {
         menuMobileContainer.classList.toggle('show');
+        syncHeaderOffset();
     });
 }
 
-const smallLogoSiteTitle = document.querySelector('.small-logo-site-title');
+const syncHeaderOffset = () => {
+    if (!headerContainer) {
+        return;
+    }
+
+    document.documentElement.style.setProperty(
+        '--wp-vip-header-offset',
+        `${headerContainer.offsetHeight}px`
+    );
+};
 
 const syncHeaderScrollState = () => {
     if (!headerContainer) {
@@ -29,11 +39,10 @@ const syncHeaderScrollState = () => {
     const isScrolled = window.scrollY > 0;
 
     headerContainer.classList.toggle('scroll', isScrolled);
-
-    if (smallLogoSiteTitle) {
-        smallLogoSiteTitle.classList.toggle('scroll', isScrolled);
-    }
+    syncHeaderOffset();
 };
 
+syncHeaderOffset();
 syncHeaderScrollState();
 window.addEventListener('scroll', syncHeaderScrollState, { passive: true });
+window.addEventListener('resize', syncHeaderOffset);

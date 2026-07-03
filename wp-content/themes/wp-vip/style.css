@@ -24,6 +24,11 @@ html, body{
     font-size: 16px;
     line-height: 1.5;
     color: #333;
+    overflow-x: hidden;
+}
+
+body{
+    padding-top: var(--wp-vip-header-offset, 0px);
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -46,21 +51,18 @@ a, button > i {
 
 /* main components */
 
-.wp-vip-main, .wp-vip-footer{
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 /* header */
 .wp-vip-header{
-    position: sticky;
+    display: flex;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 20;
     flex-direction: column;
-    margin-bottom: 1rem;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
+    width: 100%;
 }
 
 .wp-vip-header.scroll{
@@ -69,6 +71,10 @@ a, button > i {
 
 .wp-vip-header.scroll .logo-site-title{
     display: none;
+}
+
+.wp-vip-header.scroll .small-logo-site-title{
+    display: flex;
 }
 
 .wp-vip-header.scroll .wp-vip-header-menu-links{
@@ -204,6 +210,12 @@ a, button > i {
     flex-direction: column;
 }
 
+.wp-vip-main > section {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 /* footer */
 
 .wp-vip-footer{
@@ -216,7 +228,12 @@ a, button > i {
     padding: 1rem;
 }
 
-.footer-menu, .footer-copyright, .footer-menu, .footer-social{
+.footer-menu > div{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-menu > div, .footer-copyright, .footer-social{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -277,16 +294,12 @@ a, button > i {
     text-decoration: underline;
 }
 
-.small-logo-site-title.scroll{
-    display: flex;
-}
-
 @media (max-width: 768px) {
     .wp-vip-header.scroll .logo-site-title{
         display: flex !important;
     }
 
-    .footer-menu{
+    .footer-menu > div{
         flex-direction: column;
     }
 
@@ -315,4 +328,42 @@ a, button > i {
         width: 54px;
         height: 54px;
     }
+}
+
+/* financial-bar */
+.financial-bar{
+    height: 42px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.financial-bar > div{
+    padding-left: 100%;
+    animation: ticker 30s linear infinite;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-wrap-mode: nowrap;
+}
+
+@keyframes ticker {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-2160px);
+    }
+}
+
+.financial-bar__ticker > i.up{
+    color: rgb(15, 138, 66);
+}
+
+.financial-bar__ticker > i.down{
+    color: rgb(196, 37, 37);
 }
