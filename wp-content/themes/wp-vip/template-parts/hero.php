@@ -20,7 +20,7 @@ if ($hero->have_posts()) :
             } else {
                 ?>
                 <img
-                    src="https://placehold.co/900x600"
+                    src="https://placehold.co/1200x600"
                     alt="<?php the_title_attribute(); ?>"
                 >
                 <?php
@@ -33,7 +33,7 @@ if ($hero->have_posts()) :
             $categories = get_the_category();
             if (!empty($categories)) :
         ?>
-            <span class="hero__category"><?php echo esc_html($categories[0]->name); ?></span>
+            <span class="wp_category"><?php echo esc_html($categories[0]->name); ?></span>
         <?php endif; ?>
         <h2>
             <a class="hero__title" href="<?php the_permalink(); ?>">

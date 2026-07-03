@@ -4,6 +4,8 @@
     <?php get_template_part('template-parts/financial-bar'); ?>
     <?php get_template_part('template-parts/hero'); ?>
 
+    <?php get_template_part('template-parts/latest-news'); ?>
+
     <?php
         get_template_part('template-parts/news-feed', null, [
             'title' => 'Science',
@@ -12,8 +14,6 @@
             'exclude_hero'   => true,
         ]);
     ?>
-
-    <?php get_template_part('template-parts/latest-news'); ?>
 
     <section class="hero">
         <h1><?php bloginfo('name'); ?></h1>

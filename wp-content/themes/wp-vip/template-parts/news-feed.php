@@ -73,7 +73,7 @@ if ($wall_news->have_posts()) :
                             <?php echo get_the_post_thumbnail($primary_post, 'large'); ?>
                         <?php else : ?>
                             <img
-                                src="https://placehold.co/890x620"
+                                src="https://placehold.co/630x439"
                                 alt="<?php echo esc_attr(get_the_title($primary_post)); ?>"
                             >
                         <?php endif; ?>
