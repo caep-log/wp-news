@@ -15,6 +15,15 @@
         ]);
     ?>
 
+    <?php
+        get_template_part('template-parts/section-feed', null, [
+            'title' => 'Entertainment',
+            'category_slug' => 'entertainment',
+            'posts_per_page' => 4,
+            'exclude_hero'   => true,
+        ]);
+    ?>
+
     <section class="hero">
         <h1><?php bloginfo('name'); ?></h1>
         <p><?php bloginfo('description'); ?></p>

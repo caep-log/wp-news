@@ -1,7 +1,7 @@
 <?php
 $latestNews = new WP_Query([
     'post_type'      => 'post',
-    'posts_per_page' => 6,
+    'posts_per_page' => 5,
     'offset'         => 1,
 ]);
 
