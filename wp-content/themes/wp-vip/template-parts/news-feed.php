@@ -1,6 +1,5 @@
 <?php
-
-$template_args = $args ?? get_query_var('wall_news_args', []);
+$template_args = $args ?? get_query_var('feed_news_args', []);
 
 $wall_args = wp_parse_args(
     is_array($template_args) ? $template_args : [],
@@ -60,62 +59,68 @@ if ($wall_news->have_posts()) :
     $primary_post = array_shift($posts);
 ?>
 
-<section class="wall-news">
-    <div class="container">
-        <div class="section-header">
-            <h2><?php echo esc_html($section_title); ?></h2>
-        </div>
+<section class="news-feed-section">
+    <div class="news-feed-header">
+        <h3><?php echo esc_html($section_title); ?></h3>
+    </div>
 
-        <div class="wall-news__layout">
-            <?php if ($primary_post instanceof WP_Post) : setup_postdata($primary_post); ?>
-                <article class="wall-news__lead">
-                    <a href="<?php echo esc_url(get_permalink($primary_post)); ?>">
-                        <div class="wall-news__lead-media">
-                            <?php if (has_post_thumbnail($primary_post)) : ?>
-                                <?php echo get_the_post_thumbnail($primary_post, 'large'); ?>
-                            <?php else : ?>
-                                <img
-                                    src="https://placehold.co/900x620"
-                                    alt="<?php echo esc_attr(get_the_title($primary_post)); ?>"
-                                >
-                            <?php endif; ?>
+    <div class="news-feed__layout">
+        <?php if ($primary_post instanceof WP_Post) : setup_postdata($primary_post); ?>
+            <article class="news-feed__lead">
+                <a href="<?php echo esc_url(get_permalink($primary_post)); ?>">
+                    <div class="news-feed__lead-media">
+                        <?php if (has_post_thumbnail($primary_post)) : ?>
+                            <?php echo get_the_post_thumbnail($primary_post, 'large'); ?>
+                        <?php else : ?>
+                            <img
+                                src="https://placehold.co/890x620"
+                                alt="<?php echo esc_attr(get_the_title($primary_post)); ?>"
+                            >
+                        <?php endif; ?>
+                    </div>
+                    <div class="news-feed__lead-content">
+                        <h2 class="news-feed__lead-title">
+                            <?php echo esc_html(get_the_title($primary_post)); ?>
+                        </h2>
+                        <div class="container-meta">
+                            <small>
+                                By: <?php echo esc_html(get_the_author_meta('display_name', $primary_post->post_author)); ?>
+                            </small>
+                            <small>
+                                <?php echo esc_html(get_the_date('', $primary_post)); ?>
+                            </small>
                         </div>
+                    </div>
+                </a>
+            </article>
+        <?php endif; ?>
 
-                        <div class="wall-news__lead-content">
-                            <h3 class="wall-news__lead-title">
-                                <?php echo esc_html(get_the_title($primary_post)); ?>
-                            </h3>
-                        </div>
-                    </a>
-                </article>
-            <?php endif; ?>
-
-            <?php if (!empty($posts)) : ?>
-                <div class="wall-news__stack">
-                    <?php foreach (array_slice($posts, 0, 4) as $stack_post) : ?>
-                        <article class="wall-news__item">
-                            <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">
-                                <?php if (has_post_thumbnail($stack_post)) : ?>
-                                    <div class="wall-news__item-media">
-                                        <?php echo get_the_post_thumbnail($stack_post, 'medium'); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <h3 class="wall-news__item-title">
-                                    <?php echo esc_html(get_the_title($stack_post)); ?>
-                                </h3>
+        <?php if (!empty($posts)) : ?>
+            <div class="news-feed__stack">
+                <?php foreach (array_slice($posts, 0, 4) as $stack_post) : ?>
+                    <article class="news-feed__item">
+                        <h4>
+                            <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">    
+                                <?php echo esc_html(get_the_title($stack_post)); ?>
                             </a>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
+                        </h4>
+                        <div class="container-meta">
+                            <small>
+                                By: <?php echo esc_html(get_the_author_meta('display_name', $stack_post->post_author)); ?>
+                            </small>
+                            <small>
+                                <?php echo esc_html(get_the_date('', $stack_post)); ?>
+                            </small>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 
 <?php
 wp_reset_postdata();
-set_query_var('wall_news_args', null);
+set_query_var('feed_news_args', null);
 endif;
-
 ?>

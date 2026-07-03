@@ -35,9 +35,11 @@ if ($hero->have_posts()) :
         ?>
             <span class="hero__category"><?php echo esc_html($categories[0]->name); ?></span>
         <?php endif; ?>
-        <a class="hero__title" href="<?php the_permalink(); ?>">
-            <?php the_title(); ?>
-        </a>
+        <h2>
+            <a class="hero__title" href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+            </a>
+        </h2>
         <p class="hero__excerpt">
             <?php echo esc_html(get_the_excerpt()); ?>
         </p>
