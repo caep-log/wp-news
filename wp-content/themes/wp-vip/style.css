@@ -31,7 +31,7 @@ body{
     padding-top: var(--wp-vip-header-offset, 0px);
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, .hero__title{
     font-family: 'DM Serif Display', serif;
     font-weight: normal;
     margin-bottom: 1rem;
@@ -366,4 +366,54 @@ a, button > i {
 
 .financial-bar__ticker > i.down{
     color: rgb(196, 37, 37);
+}
+
+/* hero */
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.hero__image{
+    width: 100%;
+}
+
+.hero__image > a > img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    object-position: top;
+    transition: 1s all;
+}
+
+.hero__image > a > img:hover{
+    object-position: center;
+}
+
+.hero__content{
+    width: 80%;
+    margin-top: -100px;
+    background-color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.hero__category{
+    width: fit-content;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    background-color: #333;
+    color: #fff;
+}
+
+.hero__title{
+    font-size: 2rem;
+    text-decoration: none;
+    color: blue;
 }
