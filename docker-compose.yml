@@ -35,6 +35,7 @@ services:
 
     volumes:
       - ./:/var/www/html
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
 volumes:
   db_data:

@@ -46,3 +46,39 @@ syncHeaderOffset();
 syncHeaderScrollState();
 window.addEventListener('scroll', syncHeaderScrollState, { passive: true });
 window.addEventListener('resize', syncHeaderOffset);
+
+/* video carousel */
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('.reels-carousel').forEach(carousel => {
+
+        const track = carousel.querySelector('.reels-carousel__track');
+        const prev = carousel.querySelector('.reels-carousel__arrow--left');
+        const next = carousel.querySelector('.reels-carousel__arrow--right');
+
+        const getScrollAmount = () => {
+            const card = track.querySelector('.reel-card');
+            if (!card) return 300;
+
+            const gap = parseInt(getComputedStyle(track).gap) || 16;
+
+            return card.offsetWidth + gap;
+        };
+
+        prev?.addEventListener('click', () => {
+            track.scrollBy({
+                left: -getScrollAmount(),
+                behavior: 'smooth'
+            });
+        });
+
+        next?.addEventListener('click', () => {
+            track.scrollBy({
+                left: getScrollAmount(),
+                behavior: 'smooth'
+            });
+        });
+
+    });
+
+});

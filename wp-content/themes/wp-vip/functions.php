@@ -56,3 +56,21 @@ function wp_vip_enqueue_assets() {
 }
 
 add_action('wp_enqueue_scripts', 'wp_vip_enqueue_assets');
+add_action('save_post', 'mytheme_update_video_meta', 10, 2);
+
+function mytheme_update_video_meta($post_id, $post)
+{
+    if ($post->post_type !== 'post') {
+        return;
+    }
+
+    if (wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    if (has_block('core/video', $post)) {
+        update_post_meta($post_id, '_has_video', 1);
+    } else {
+        delete_post_meta($post_id, '_has_video');
+    }
+}
