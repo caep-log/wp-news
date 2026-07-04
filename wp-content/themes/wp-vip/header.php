@@ -20,9 +20,17 @@
             <i class="bi bi-list"></i>
         </button>
         <h1>
-            <a href="<?php echo esc_url(home_url('/')); ?>">
-                WP NEWS
-            </a>
+            <?php
+            if (has_custom_logo()) {
+                the_custom_logo();
+            } else {
+            ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
+                    <?php bloginfo('name'); ?>
+                </a>
+            <?php
+            }
+            ?>
         </h1>
         <button>
             <i class="bi bi-search"></i>
@@ -87,8 +95,8 @@
             </div>
         </div>
         <div>
-            <a href="/sign-up">Subscribe</a>
-            <a href="/sign-in">Sign In</a>
+            <a class="btn-subscribe" href="/sign-up">Subscribe</a>
+            <a class="btn-sign-in" href="/sign-in">Sign In</a>
         </div>
     </div>
 </header>

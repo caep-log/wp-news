@@ -8,6 +8,19 @@ Tested up to: 6.8
 Requires PHP: 8.3
 */
 
+:root{
+    --primary: #2563eb;
+    --secondary: #1e40af;
+    --accent: #60a5fa;
+
+    --text: #333333;
+    --heading: #000000;
+    --muted: #5f5f5f;
+    --background: #ffffff;
+
+    --link-hover: var(--primary);
+}
+
 #wpadminbar{
     display: none !important;
 }
@@ -18,12 +31,14 @@ Requires PHP: 8.3
     box-sizing: border-box;
 }
 
-html, body{
+html,
+body{
     margin-top: 0 !important;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: var(--text);
+    background: var(--background);
     overflow-x: hidden;
 }
 
@@ -31,8 +46,9 @@ body{
     padding-top: var(--wp-vip-header-offset, 0px);
 }
 
-a {
+a{
     text-decoration: none;
+    color: var(--primary);
 }
 
 h1 > a,
@@ -41,66 +57,79 @@ h3 > a,
 h4 > a,
 h5 > a,
 h6 > a{
-    color: rgba(0,0,0,1);
+    color: var(--heading);
     text-decoration: none;
 }
 
 h1 > a {
-	font-size: 2.5rem; /* 40px */
+	font-size: 2.5rem;
 }
 
 h2 > a {
-	font-size: 2rem; /* 32px */
+	font-size: 2rem;
 }
 
 h3 > a {
-	font-size: 1.75rem; /* 28px */
+	font-size: 1.75rem;
 }
 
 h4 > a {
-	font-size: 1.5rem; /* 24px */
+	font-size: 1.5rem;
 }
 
 h5 > a {
-	font-size: 1.25rem; /* 20px */
+	font-size: 1.25rem;
 }
 
 h6 > a {
-	font-size: 1rem; /* 16px */
+	font-size: 1rem;
 }
 
-h1, h2, h3, h4, h5, h6, .hero__title{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero__title{
     font-family: 'DM Serif Display', serif;
     font-weight: normal;
     margin-bottom: 1rem;
-    color: rgba(0,0,0,1);
+    color: var(--heading);
 }
 
 h1:hover > a,
 h2:hover > a,
 h3:hover > a,
 h4:hover > a,
-h5:hover > a, 
+h5:hover > a,
 h6:hover > a{
     text-decoration: underline;
-    color: blue;
+    color: var(--link-hover);
 }
 
-h2, h3, h4, h5, h6{
-    margin-bottom: 0px;
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin-bottom: 0;
 }
 
-a, button{
+a,
+button{
     font-size: 16px;
 }
 
-a, button > i {
+a,
+button > i{
     font-size: 18px;
 }
 
 small{
+    text-decoration: none !important;
     font-size: 12px;
-    color: rgb(95, 95, 95);
+    color: var(--muted);
 }
 
 /* main components */
@@ -110,7 +139,7 @@ small{
     text-align: center;
     padding: 0px 5px;
     font-size: 12px;
-    background-color: #333;
+    background-color: var(--secondary);
     color: #fff;
 }
 
@@ -131,7 +160,7 @@ small{
     z-index: 20;
     flex-direction: column;
     border-bottom: 1px solid #ccc;
-    background-color: #fff;
+    background-color: var(--background);
     width: 100%;
 }
 
@@ -190,6 +219,7 @@ small{
 }
 
 .logo-site-title > h1 > a:hover{
+    color: var(--primary);
     text-decoration: underline;
 }
 
@@ -217,10 +247,8 @@ small{
     border: none;
     transition: .3s all;
     cursor: pointer;
-}
-.dropdown:hover .wp-vip-header-menu-links__links__more > a:hover,
-.wp-vip-header-menu-links > div > a:hover, button:hover{
-    background-color: rgba(0,0,0,.1);
+    background-color: var(--background);
+    border-bottom: 5px solid var(--background);
 }
 
 .wp-vip-header-menu-links__links{
@@ -234,7 +262,11 @@ small{
     transition: .3s all;
 }
 
+.wp-vip-header-menu-links__links__more > a:hover,
+.dropdown:hover > button,
 .wp-vip-header-menu-links__links > a:hover{
+    color: var(--primary);
+    border-bottom: 5px solid var(--primary);
     text-decoration: underline;
 }
 
@@ -249,7 +281,7 @@ small{
     left: 0;
     display: none;
     min-width: 180px;
-    background: #fff;
+    background: var(--background);
     border: 1px solid #ddd;
     box-shadow: 0 8px 20px rgba(0,0,0,.2);
 }
@@ -272,6 +304,27 @@ small{
     color: rgba(0,0,0,1);
     transition: .3s all;
     gap: .5rem;
+    border-bottom: 5px solid var(--background);
+}
+
+.btn-subscribe{
+    transition: .3s all;
+    border-bottom: 5px solid var(--primary) !important;
+}
+
+.btn-subscribe:hover{
+    background-color: var(--primary);
+    border-bottom: 5px solid var(--background) !important;
+    color: #fff;
+}
+
+.btn-sign-in{
+    color: var(--primary) !important;
+    transition: .3s all;
+}
+
+.btn-sign-in:hover{
+    border-bottom: 5px solid var(--primary) !important;
 }
 
 /* main */
@@ -279,6 +332,7 @@ small{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: rgba(252,252,252,1);
 }
 
 .wp-vip-main > section {
@@ -363,6 +417,14 @@ small{
 
 .small-logo-site-title > a:hover{
     text-decoration: underline;
+}
+
+.footer-menu-links > a:hover{
+    color: var(--primary);
+}
+
+.footer-social > a{
+    color: var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -467,7 +529,7 @@ small{
 .hero__content{
     width: 80%;
     margin-top: -100px;
-    background-color: #fff;
+    background-color: var(--background);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -482,7 +544,7 @@ small{
 
 .hero__title:hover{
     text-decoration: underline;
-    color: blue;
+    color: var(--primary);
 }
 
 
@@ -538,18 +600,18 @@ small{
     text-decoration: none;
 }
 
-.news-feed__lead:hover > a {
-    text-decoration: underline;
-} 
-
 .news-feed__lead-title{
     color: rgba(0,0,0,1);
+}
+
+.news-feed__lead:hover > a > .news-feed__lead-content > .news-feed__lead-title {
+    text-decoration: underline;
 }
 
 .news-feed__lead:hover > a > 
 .news-feed__lead-content >
 .news-feed__lead-title{
-    color: blue;
+    color: var(--primary);
 }
 
 .news-feed__stack{
@@ -647,6 +709,16 @@ small{
     display: flex;
     flex-direction: row;
     gap: 1rem;
+}
+
+.section-feed__lead:hover > a > .section-feed__lead-content > .section-feed__lead-title {
+    text-decoration: underline;
+}
+
+.section-feed__lead:hover > a > 
+.section-feed__lead-content >
+.section-feed__lead-title{
+    color: var(--primary);
 }
 
 .section-feed__stack{
@@ -801,4 +873,74 @@ small{
     .reel-card{
         flex:0 0 270px;
     }
+}
+
+
+/* news from category */
+.news-category-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.news-category__stack{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.news-category__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+}
+
+@media (max-width: 768px) {
+    .news-category-section{
+        padding: 0px 1rem 22px;
+    }
+
+    .news-category__stack{
+        flex-direction: column;
+    }
+}
+
+/* ads */
+
+.ad-placeholder{
+    width: 300px;
+    min-height: 100px;
+    padding: 1rem;
+    margin: 2rem 0;
+    border: 2px dashed #cfcfcf;
+    border-radius: 8px;
+    background: #f8f8f8;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin: 0 auto;
+}
+
+.ad-placeholder__label{
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    color:#888;
+}
+
+.ad-placeholder__content h4{
+    margin:0;
+    font-size:1.1rem;
+}
+
+.ad-placeholder__content p{
+    margin:0;
+    color:#666;
 }

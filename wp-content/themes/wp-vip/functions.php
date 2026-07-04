@@ -74,3 +74,68 @@ function mytheme_update_video_meta($post_id, $post)
         delete_post_meta($post_id, '_has_video');
     }
 }
+
+require_once get_template_directory() . '/inc/palettes.php';
+
+function theme_customize_register($wp_customize)
+{
+    $palettes = theme_get_palettes();
+
+    $choices = [];
+
+    foreach ($palettes as $key => $palette) {
+        $choices[$key] = $palette['label'];
+    }
+
+    $wp_customize->add_section('theme_colors', [
+        'title' => __('Colores del tema', 'wp-vip'),
+        'priority' => 30,
+    ]);
+
+    $wp_customize->add_setting('theme_palette', [
+        'default' => 'blue',
+        'transport' => 'refresh',
+        'sanitize_callback' => function ($value) use ($choices) {
+            if (!is_string($value)) {
+                return 'blue';
+            }
+
+            $value = sanitize_key($value);
+
+            return array_key_exists($value, $choices) ? $value : 'blue';
+        },
+    ]);
+
+    $wp_customize->add_control('theme_palette', [
+        'label' => __('Paleta de colores', 'wp-vip'),
+        'section' => 'theme_colors',
+        'type' => 'radio',
+        'choices' => $choices,
+    ]);
+}
+
+add_action('customize_register', 'theme_customize_register');
+
+function theme_print_css_variables()
+{
+    $palettes = theme_get_palettes();
+
+    $current = get_theme_mod('theme_palette', 'blue');
+
+    if (!is_string($current) || !isset($palettes[$current])) {
+        $current = 'blue';
+    }
+
+    $colors = $palettes[$current];
+
+    $css = sprintf(
+        ':root{--primary:%1$s;--secondary:%2$s;--accent:%3$s;}',
+        sanitize_hex_color($colors['primary']),
+        sanitize_hex_color($colors['secondary']),
+        sanitize_hex_color($colors['accent'])
+    );
+
+    wp_add_inline_style('wp-vip-style', $css);
+}
+
+add_action('wp_enqueue_scripts', 'theme_print_css_variables', 20);
