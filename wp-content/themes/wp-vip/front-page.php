@@ -58,6 +58,7 @@
         ]);
     ?>
         <?php get_template_part('template-parts/ads'); ?>
+        <br />
 </main>
 
 <?php get_footer(); ?>

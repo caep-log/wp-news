@@ -15,17 +15,19 @@ if (!empty($latest_news_posts)) :
     <?php foreach ($latest_news_posts as $latest_post) : ?>
         <article>
             <div class="latest-news__image">
-                <a href="<?php the_permalink(); ?>">
+                <a href="<?php echo esc_url(get_permalink($latest_post)); ?>">
                     <?php
-                    if (has_post_thumbnail()) {
-                        the_post_thumbnail(
-                            'large', ['loading' => 'eager']
+                    if (has_post_thumbnail($latest_post)) {
+                        echo get_the_post_thumbnail(
+                            $latest_post,
+                            'large',
+                            ['loading' => 'eager']
                         );
                     } else {
                         ?>
                         <img
                             src="https://placehold.co/400x266"
-                            alt="<?php the_title_attribute(); ?>"
+                            alt="<?php echo esc_attr(get_the_title($latest_post)); ?>"
                         >
                         <?php
                     }
