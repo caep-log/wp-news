@@ -22,7 +22,6 @@
             'exclude_hero'   => true,
         ]);
     ?>
-
     <?php get_template_part('template-parts/video-carousel'); ?>    
     <?php
         get_template_part('template-parts/news-from-category', null, [

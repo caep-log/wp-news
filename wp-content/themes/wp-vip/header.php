@@ -14,6 +14,18 @@
 
 <?php wp_body_open(); ?>
 
+<?php
+$wp_vip_category_url = static function ($slug) {
+    $category = get_category_by_slug(sanitize_title($slug));
+
+    if ($category instanceof WP_Term) {
+        return get_category_link($category);
+    }
+
+    return home_url('/category/' . sanitize_title($slug) . '/');
+};
+?>
+
 <header class="wp-vip-header">
     <div class="logo-site-title">
         <button class="wp-vip-header-menu-toggle" aria-label="Toggle menu">
@@ -45,23 +57,23 @@
             </h2>
         </div>
         <div class="wp-vip-header-menu-links__links">
-            <a href="/world">
+            <a href="<?php echo esc_url($wp_vip_category_url('world')); ?>">
                 <i class="bi bi-globe2"></i>
                 World
             </a>
-            <a href="/sports">
+            <a href="<?php echo esc_url($wp_vip_category_url('sports')); ?>">
                 <i class="bi bi-cookie"></i>
                 Sports
             </a>
-            <a href="/economy">
+            <a href="<?php echo esc_url($wp_vip_category_url('economy')); ?>">
                 <i class="bi bi-briefcase"></i>
                 Economy
             </a>
-            <a href="/technology">
+            <a href="<?php echo esc_url($wp_vip_category_url('technology')); ?>">
                 <i class="bi bi-globe2"></i>
                 Technology
             </a>
-            <a href="/science">
+            <a href="<?php echo esc_url($wp_vip_category_url('science')); ?>">
                 <i class="bi bi-flask"></i>
                 Science
             </a>
@@ -71,23 +83,19 @@
                     More
                 </button>
                 <div class="wp-vip-header-menu-links__links__more">
-                    <a href="/business">
-                        <i class="bi bi-currency-bitcoin"></i>
-                        Business
-                    </a>
-                    <a href="/health">
+                    <a href="<?php echo esc_url($wp_vip_category_url('health')); ?>">
                         <i class="bi bi-people"></i>
                         Health
                     </a>
-                    <a href="/entertainment">
+                    <a href="<?php echo esc_url($wp_vip_category_url('entertainment')); ?>">
                         <i class="bi bi-camera"></i>
                         Entertainment
                     </a>
-                    <a href="/music">
+                    <a href="<?php echo esc_url($wp_vip_category_url('music')); ?>">
                         <i class="bi bi-music-note-beamed"></i>
                         Music
                     </a>
-                    <a href="/book">
+                    <a href="<?php echo esc_url($wp_vip_category_url('books')); ?>">
                         <i class="bi bi-book"></i>
                         Books
                     </a>
