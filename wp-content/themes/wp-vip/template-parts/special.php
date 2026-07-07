@@ -64,32 +64,52 @@ if ($wall_news->have_posts()) :
             <div class="special__stack">
                 <?php foreach (array_slice($posts, 0, 1) as $stack_post) : ?>
                     <article class="special__item">
-                        <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">
-                            <?php
-                            if (has_post_thumbnail()) {
-                                the_post_thumbnail(
-                                    'large', ['loading' => 'eager']
-                                );
-                            } else {
-                                ?>
-                                <img
-                                    src="https://placehold.co/1200x600"
-                                    alt="<?php the_title_attribute(); ?>"
-                                >
+                        <a class="special__media" href="<?php echo esc_url(get_permalink($stack_post)); ?>">
+                            <?php if (has_post_thumbnail($stack_post)) : ?>
                                 <?php
-                            }
-                            ?>
+                                echo get_the_post_thumbnail(
+                                    $stack_post,
+                                    'large',
+                                    [
+                                        'loading' => 'eager',
+                                        'alt'     => esc_attr(get_the_title($stack_post)),
+                                    ]
+                                );
+                                ?>
+                            <?php else : ?>
+                                <img
+                                    src="https://placehold.co/1200x640"
+                                    alt="<?php echo esc_attr(get_the_title($stack_post)); ?>"
+                                >
+                            <?php endif; ?>
                         </a>
 
-                        <h4>
-                            <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">    
-                                <?php echo esc_html(get_the_title($stack_post)); ?>
-                            </a>
-                        </h4>
+                        <div class="special__content">
+                            <span class="special__eyebrow"><?php echo esc_html($section_title); ?></span>
 
-                        <p class="special__excerpt">
-                            <?php echo esc_html(get_the_excerpt($stack_post)); ?>
-                        </p>
+                            <h4>
+                                <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">
+                                    <?php echo esc_html(get_the_title($stack_post)); ?>
+                                </a>
+                            </h4>
+
+                            <p class="special__excerpt">
+                                <?php echo esc_html(get_the_excerpt($stack_post)); ?>
+                            </p>
+
+                            <div class="special__meta">
+                                <small>
+                                    By: <?php echo esc_html(get_the_author_meta('display_name', $stack_post->post_author)); ?>
+                                </small>
+                                <small>
+                                    <?php echo esc_html(get_the_date('', $stack_post)); ?>
+                                </small>
+                            </div>
+
+                            <a class="special__cta" href="<?php echo esc_url(get_permalink($stack_post)); ?>">
+                                Read the special
+                            </a>
+                        </div>
                     </article>
                 <?php endforeach; ?>
             </div>

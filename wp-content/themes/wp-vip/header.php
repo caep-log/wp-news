@@ -103,8 +103,8 @@ $wp_vip_category_url = static function ($slug) {
             </div>
         </div>
         <div>
-            <a class="btn-subscribe" href="/sign-up">Subscribe</a>
-            <a class="btn-sign-in" href="/sign-in">Sign In</a>
+            <a class="btn-subscribe" href="/">Subscribe</a>
+            <a class="btn-sign-in" href="/">Sign In</a>
         </div>
     </div>
 </header>
