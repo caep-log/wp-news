@@ -68,13 +68,33 @@ if ($wall_news->have_posts()) :
             <div class="news-category__stack">
                 <?php foreach (array_slice($posts, 0, 3) as $stack_post) : ?>
                     <article class="news-category__item">
+                        <a class="news-category__media" href="<?php echo esc_url(get_permalink($stack_post)); ?>">
+                            <?php if (has_post_thumbnail($stack_post)) : ?>
+                                <?php
+                                echo get_the_post_thumbnail(
+                                    $stack_post,
+                                    'medium_large',
+                                    [
+                                        'loading' => 'lazy',
+                                        'alt'     => esc_attr(get_the_title($stack_post)),
+                                    ]
+                                );
+                                ?>
+                            <?php else : ?>
+                                <img
+                                    src="https://placehold.co/640x420"
+                                    alt="<?php echo esc_attr(get_the_title($stack_post)); ?>"
+                                >
+                            <?php endif; ?>
+                        </a>
+
                         <h4>
                             <a href="<?php echo esc_url(get_permalink($stack_post)); ?>">    
                                 <?php echo esc_html(get_the_title($stack_post)); ?>
                             </a>
                         </h4>
 
-                        <p class="hero__excerpt">
+                        <p class="news-category__excerpt">
                             <?php echo esc_html(get_the_excerpt($stack_post)); ?>
                         </p>
 

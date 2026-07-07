@@ -58,7 +58,24 @@
         ]);
     ?>
         <?php get_template_part('template-parts/ads'); ?>
+    <?php
+        get_template_part('template-parts/section-feed', null, [
+            'title' => 'Music',
+            'category_slug' => 'music',
+            'posts_per_page' => 4,
+            'exclude_hero'   => true,
+        ]);
+    ?>
+    <?php
+        get_template_part('template-parts/news-feed', null, [
+            'title' => 'Books',
+            'category_slug' => 'books',
+            'posts_per_page' => 5,
+            'exclude_hero'   => true,
+        ]);
+    ?>
         <br />
+
 </main>
 
 <?php get_footer(); ?>

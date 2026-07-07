@@ -49,9 +49,7 @@ $category_name = single_cat_title('', false);
 		?>
 	</div>
 
-	<div class="container-block">
-		<?php get_template_part('template-parts/video-carousel'); ?>
-	</div>
+	<?php get_template_part('template-parts/video-carousel'); ?>
 
 	<div class="container-block">
 		<?php
