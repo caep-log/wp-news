@@ -163,13 +163,16 @@ small{
     right: 0;
     z-index: 20;
     flex-direction: column;
-    border-bottom: 1px solid #ccc;
-    background-color: var(--background);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(18px);
     width: 100%;
+    transition: box-shadow .25s ease, border-color .25s ease;
 }
 
 .wp-vip-header.scroll{
-    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    border-color: rgba(0,0,0,.08);
+    box-shadow: 0 14px 38px rgba(0,0,0,.1);
 }
 
 .wp-vip-header.scroll .logo-site-title{
@@ -184,42 +187,71 @@ small{
     margin-top: 0;
 }
 
-.logo-site-title, .wp-vip-header-menu-links{
+.logo-site-title,
+.wp-vip-header-menu-links{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding-inline: 1rem;
 }
 
 .logo-site-title{
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: rgba(0,0,0,1);
+    min-height: 86px;
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+    align-items: center;
+    color: var(--heading);
     text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+}
+
+.logo-site-title > h1{
+    grid-column: 2;
+    justify-self: center;
+    margin: 0;
+    line-height: 1;
 }
 
 .logo-site-title > button {
-    display: none;
-    background: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 46px;
+    justify-self: end;
     border: none;
+    border-radius: 8px;
+    color: var(--heading);
+    background: transparent;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.logo-site-title > .wp-vip-header-menu-toggle{
+    grid-column: 1;
+    display: none;
+    justify-self: start;
+}
+
+.logo-site-title > .btn-sign-in{
+    grid-column: 3;
+    justify-self: end;
 }
 
 .logo-site-title > button > i {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .logo-site-title > button:hover{
-    background-color: rgba(0,0,0,.1);
+    color: var(--primary);
+    background-color: rgba(37,99,235,.08);
+    transform: translateY(-1px);
 }
 
 .logo-site-title > h1 > a{
-    font-size: 3rem;
+    font-size: clamp(2.25rem, 4vw, 3.35rem);
+    line-height: .95;
     text-decoration: none;
-    color: rgba(0,0,0,1);
-    transition: .3s all;
+    color: var(--heading);
+    transition: color .25s ease;
 }
 
 .logo-site-title > h1 > a:hover{
@@ -228,50 +260,70 @@ small{
 }
 
 .wp-vip-header-menu-links{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) auto minmax(160px, 1fr);
+    align-items: center;
     gap: 1rem;
-    margin-top: .5rem;
+    min-height: 58px;
+    margin-top: .25rem;
 }
 
 .wp-vip-header-menu-links.show{
-    display: flex;
+    display: grid;
 }
 
-.wp-vip-header-menu-links > div > a, button{
+.wp-vip-header-menu-links__brand{
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.wp-vip-header-actions{
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .35rem;
+    min-width: 0;
+}
+
+.wp-vip-header-menu-links a,
+.wp-vip-header-menu-links button{
     text-decoration: none;
-    color: rgba(0,0,0,1);
+    color: var(--heading);
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: .5rem;
-    height: 54px;
-    padding: 0px .5rem;
+    min-height: 46px;
+    padding: 0 .72rem;
     border: none;
-    transition: .3s all;
+    border-radius: 8px;
+    transition: color .25s ease, background .25s ease, box-shadow .25s ease;
     cursor: pointer;
-    background-color: var(--background);
-    border-bottom: 5px solid var(--background);
+    background: transparent;
 }
 
 .wp-vip-header-menu-links__links{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .15rem;
 }
 
 .wp-vip-header-menu-links__links > a {
     text-decoration: none;
-    color: rgba(0,0,0,1);
-    transition: .3s all;
+    color: var(--heading);
+    font-weight: 700;
+    transition: color .25s ease, background .25s ease;
 }
 
 .wp-vip-header-menu-links__links__more > a:hover,
 .dropdown:hover > button,
 .wp-vip-header-menu-links__links > a:hover{
     color: var(--primary);
-    border-bottom: 5px solid var(--primary);
-    text-decoration: underline;
+    background: rgba(37,99,235,.08);
+    text-decoration: none;
 }
 
 .dropdown {
@@ -281,13 +333,16 @@ small{
 
 .wp-vip-header-menu-links__links__more {
     position: absolute;
-    top: 100%;
+    top: calc(100% - .1rem);
     left: 0;
+    z-index: 2;
     display: none;
-    min-width: 180px;
-    background: var(--background);
-    border: 1px solid #ddd;
-    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    min-width: 210px;
+    padding: .45rem;
+    background: rgba(255,255,255,.98);
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 8px;
+    box-shadow: 0 18px 46px rgba(0,0,0,.14);
 }
 
 .wp-vip-header-menu-links__links__more.show {
@@ -295,7 +350,8 @@ small{
     flex-direction: column;
 }
 
-.dropdown:hover .wp-vip-header-menu-links__links__more {
+.dropdown:hover .wp-vip-header-menu-links__links__more,
+.dropdown:focus-within .wp-vip-header-menu-links__links__more {
     display: flex;
     flex-direction: column;
 }
@@ -303,32 +359,59 @@ small{
 .wp-vip-header-menu-links__links__more > a {
     display: flex;
     flex-direction: row;
-    padding: 0.5rem 1rem;
+    justify-content: flex-start;
+    padding: .65rem .8rem;
     text-decoration: none;
-    color: rgba(0,0,0,1);
-    transition: .3s all;
+    color: var(--heading);
+    transition: color .25s ease, background .25s ease;
     gap: .5rem;
-    border-bottom: 5px solid var(--background);
 }
 
 .btn-subscribe{
-    transition: .3s all;
-    border-bottom: 5px solid var(--primary) !important;
+    min-height: 40px !important;
+    padding-inline: .9rem !important;
+    color: #fff !important;
+    font-size: .9rem !important;
+    font-weight: 700;
+    background: var(--primary) !important;
+    box-shadow: 0 8px 18px rgba(37,99,235,.2);
 }
 
 .btn-subscribe:hover{
-    background-color: var(--primary);
-    border-bottom: 5px solid var(--background) !important;
+    background-color: var(--secondary) !important;
     color: #fff;
 }
 
 .btn-sign-in{
-    color: var(--primary) !important;
-    transition: .3s all;
+    border-radius: 8px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-wrap-mode: nowrap;
+    min-height: 40px !important;
+    padding-inline: .75rem !important;
+    color: var(--heading) !important;
+    font-size: .9rem !important;
+    font-weight: 700;
+    background: transparent !important;
+    transition: color .25s ease, background .25s ease, border-color .25s ease;
 }
 
 .btn-sign-in:hover{
-    border-bottom: 5px solid var(--primary) !important;
+    color: var(--primary) !important;
+    background: rgba(37,99,235,.08) !important;
+}
+
+@media (max-width: 768px) {
+    .btn-sign-in{
+        width: 54px;
+        height: 54px;
+    }
+
+    .dropdown{
+        width: 100%;
+    }
 }
 
 /* main */
@@ -432,38 +515,79 @@ small{
 }
 
 @media (max-width: 768px) {
+    .btn-sign-in{
+        font-size: 24px !important;
+    }
+
+    .btn-sign-in > span{
+        display: none;
+    }
+
     .wp-vip-header.scroll .logo-site-title{
-        display: flex !important;
+        display: grid !important;
     }
 
     .footer-menu > div{
         flex-direction: column;
     }
 
-    .wp-vip-header-menu-links, .wp-vip-header-menu-links__links{
+    .wp-vip-header-menu-links,
+    .wp-vip-header-menu-links__links{
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
 
-    .wp-vip-header-menu-links__links > a, button, div{
+    .wp-vip-header-menu-links__links > a,
+    .wp-vip-header-menu-links button,
+    .wp-vip-header-actions,
+    .wp-vip-header-actions > a{
         width: 100%;
     }
 
     .wp-vip-header-menu-links{
         display: none;
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding: .75rem 1rem 1rem;
+        border-top: 1px solid rgba(0,0,0,.08);
+        background: rgba(255,255,255,.98);
+    }
+
+    .wp-vip-header-menu-links.show{
+        display: flex;
     }
 
     .logo-site-title{
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr) 54px;
         justify-content: space-between;
         align-items: center;
+        min-height: 72px;
         height: 72px;
     }
 
-    .logo-site-title > button {
-        display: inline-block;
+    .logo-site-title > button,
+    .logo-site-title > .wp-vip-header-menu-toggle{
+        display: inline-flex;
         width: 54px;
         height: 54px;
+    }
+
+    .wp-vip-header-menu-links__brand,
+    .wp-vip-header-actions{
+        justify-content: center;
+    }
+
+    .wp-vip-header-menu-links__links{
+        gap: .25rem;
+    }
+
+    .wp-vip-header-menu-links__links__more{
+        position: static;
+        width: 100%;
+        margin-top: .25rem;
+        box-shadow: none;
     }
 }
 

@@ -37,19 +37,20 @@ $wp_vip_category_url = static function ($slug) {
                 the_custom_logo();
             } else {
             ?>
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="wp-vip-site-title">
                     <?php bloginfo('name'); ?>
                 </a>
             <?php
             }
             ?>
         </h1>
-        <button>
-            <i class="bi bi-search"></i>
-        </button>
+        <a class="btn-sign-in" href="/">
+            <i class="bi bi-person"></i>
+            <span>Sign In</span>
+        </a>
     </div>
     <div class="wp-vip-header-menu-links">
-        <div>
+        <div class="wp-vip-header-menu-links__brand">
             <h2 class="small-logo-site-title">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     WP NEWS
@@ -102,9 +103,11 @@ $wp_vip_category_url = static function ($slug) {
                 </div>
             </div>
         </div>
-        <div>
-            <a class="btn-subscribe" href="/">Subscribe</a>
-            <a class="btn-sign-in" href="/">Sign In</a>
+        <div class="wp-vip-header-actions">
+            <a class="btn-subscribe" href="/">
+                <i class="bi bi-bookmark-plus"></i>
+                Subscribe
+            </a>
         </div>
     </div>
 </header>
