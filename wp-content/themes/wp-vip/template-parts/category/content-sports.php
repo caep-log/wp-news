@@ -10,6 +10,7 @@ $category = get_queried_object();
     </div>
 	
 	<div class="spots-block-info">
+		<h1>World Cup 2026</h1>
 		<div class="header-sport-view">
 			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/mundial2026.jpg' ); ?>" alt="World Cup 2026">
 			<div class="banner-matches-today">
@@ -102,11 +103,9 @@ $category = get_queried_object();
 		<?php get_template_part('template-parts/ads'); ?>
 	<div class="container-block">
 		<?php
-			get_template_part('template-parts/news-from-category', null, [
-				'title' => '',
-				'category_slug' => 'sports',
-				'posts_per_page' => 3,
-				'exclude_hero'   => true,
+			get_template_part('template-parts/category-news-grid', null, [
+				'title' => 'Sport',
+				'category_slug' => 'sport',
 			]);
 		?>
 	</div>
@@ -116,6 +115,16 @@ $category = get_queried_object();
 				'title' => '',
 				'category_slug' => 'sports',
 				'posts_per_page' => 10,
+				'exclude_hero'   => true,
+			]);
+		?>
+	</div>
+	<div class="container-block">
+		<?php
+			get_template_part('template-parts/news-from-category', null, [
+				'title' => '',
+				'category_slug' => 'sports',
+				'posts_per_page' => 3,
 				'exclude_hero'   => true,
 			]);
 		?>

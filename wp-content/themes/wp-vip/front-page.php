@@ -3,26 +3,20 @@
 <main class="wp-vip-main">
     <?php get_template_part('template-parts/financial-bar'); ?>
         <?php get_template_part('template-parts/ads'); ?>
-    <?php get_template_part('template-parts/hero'); ?>
-    <?php get_template_part('template-parts/latest-news'); ?>
-        <?php get_template_part('template-parts/ads'); ?>
     <?php
         get_template_part('template-parts/news-feed', null, [
-            'title' => 'Science',
-            'category_slug' => 'science',
+            'title' => 'Economy',
+            'category_slug' => 'economy',
             'posts_per_page' => 5,
             'exclude_hero'   => true,
         ]);
     ?>
     <?php
-        get_template_part('template-parts/section-feed', null, [
-            'title' => 'Entertainment',
-            'category_slug' => 'entertainment',
-            'posts_per_page' => 4,
-            'exclude_hero'   => true,
-        ]);
-    ?>
-    <?php get_template_part('template-parts/video-carousel'); ?>    
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => 'More Economy',
+			'category_slug' => 'economy',
+		]);
+	?>
     <?php
         get_template_part('template-parts/news-from-category', null, [
             'title' => 'World',
@@ -40,15 +34,42 @@
             'exclude_hero'   => true,
         ]);
     ?>
+        <?php get_template_part('template-parts/ads'); ?>
     <?php
         get_template_part('template-parts/news-feed', null, [
-            'title' => 'Economy',
-            'category_slug' => 'economy',
+            'title' => 'Science',
+            'category_slug' => 'science',
             'posts_per_page' => 5,
             'exclude_hero'   => true,
         ]);
     ?>
-        <?php get_template_part('template-parts/ads'); ?>
+	<?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => 'More Science',
+			'category_slug' => 'science',
+		]);
+	?>
+    <div class="wp-theme-news-grid">
+        <div class="left-container-news">
+            <?php
+                get_template_part('template-parts/section-feed', null, [
+                    'title' => 'Music',
+                    'category_slug' => 'music',
+                    'posts_per_page' => 4,
+                    'exclude_hero'   => true,
+                ]);
+            ?>
+
+            <?php
+                get_template_part('template-parts/all-news');
+            ?>
+        </div>
+        <div class="right-container-news">
+            <?php get_template_part('template-parts/latest-news'); ?>
+            <br />
+                <?php get_template_part('template-parts/ads'); ?>
+        </div>
+    </div>
     <?php
         get_template_part('template-parts/news-from-category', null, [
             'title' => 'AI',
@@ -58,14 +79,16 @@
         ]);
     ?>
         <?php get_template_part('template-parts/ads'); ?>
+    <?php get_template_part('template-parts/video-carousel'); ?>
     <?php
         get_template_part('template-parts/section-feed', null, [
-            'title' => 'Music',
-            'category_slug' => 'music',
+            'title' => 'Entertainment',
+            'category_slug' => 'entertainment',
             'posts_per_page' => 4,
             'exclude_hero'   => true,
         ]);
     ?>
+        <?php get_template_part('template-parts/ads'); ?>
     <?php
         get_template_part('template-parts/news-feed', null, [
             'title' => 'Books',
@@ -74,8 +97,25 @@
             'exclude_hero'   => true,
         ]);
     ?>
-        <br />
-
+    <?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => '',
+			'category_slug' => 'books',
+		]);
+	?>
+    <?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => '',
+			'category_slug' => 'music',
+		]);
+	?>
+    <?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => '',
+			'category_slug' => 'entertaiment',
+		]);
+	?>
+    <br />
 </main>
 
 <?php get_footer(); ?>

@@ -12,18 +12,22 @@ $category = get_queried_object();
 			'exclude_hero'   => true,
 		]);
 	?>
-	<br />
+	<?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => 'World',
+			'category_slug' => 'world',
+		]);
+	?>
 	<div class="container-block">
 		<?php
 			get_template_part('template-parts/lastest-news-by-category', null, [
 				'title' => 'World',
 				'category_slug' => 'World',
-				'posts_per_page' => 10,
+				'posts_per_page' => 8,
 				'exclude_hero'   => true,
 			]);
 		?>
 	</div>
-		<?php get_template_part('template-parts/ads'); ?>
 	<div class="container-block">
 		<?php
 			get_template_part('template-parts/news-feed', null, [

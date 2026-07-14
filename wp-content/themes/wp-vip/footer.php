@@ -36,9 +36,6 @@ $wp_vip_category_url = static function ($slug) {
         <a href="/whatsapp" class="footer-social-link">
             <i class="bi bi-whatsapp"></i>
         </a>
-        <a href="/slack" class="footer-social-link">
-            <i class="bi bi-slack"></i>
-        </a>
     </div>
     <div class="footer-menu">
         <div>

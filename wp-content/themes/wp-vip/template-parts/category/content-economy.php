@@ -20,11 +20,15 @@ $category = get_queried_object();
                 'category_slug' => 'economy',
                 'posts_per_page' => 3,
                 'exclude_hero'   => true,
-                ]);
-            ?>
-        <?php get_template_part('template-parts/video-carousel'); ?>    
+            ]);
+        ?>
+        <?php
+            get_template_part('template-parts/category-news-grid', null, [
+                'title' => 'Economy',
+                'category_slug' => 'economy',
+            ]);
+        ?>
     </div>
-        <?php get_template_part('template-parts/ads'); ?>
     <div class="container-block">
         <?php
             get_template_part('template-parts/news-feed', null, [
@@ -34,6 +38,10 @@ $category = get_queried_object();
                 'exclude_hero'   => true,
             ]);
         ?>
+    </div>
+        <?php get_template_part('template-parts/ads'); ?>
+        <?php get_template_part('template-parts/video-carousel'); ?>
+    <div class="container-block">
         <?php
             get_template_part('template-parts/news-from-category', null, [
                 'title' => 'AI',

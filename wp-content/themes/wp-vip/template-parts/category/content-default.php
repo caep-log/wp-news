@@ -15,7 +15,6 @@ $category_name = single_cat_title('', false);
 	</div>
 
 	<?php get_template_part('template-parts/ads'); ?>
-
 	<div class="container-block">
 		<?php
 			get_template_part('template-parts/news-feed', null, [
@@ -26,7 +25,12 @@ $category_name = single_cat_title('', false);
 			]);
 		?>
 	</div>
-
+	<?php
+		get_template_part('template-parts/category-news-grid', null, [
+			'title' => '',
+			'category_slug' => 'technology',
+		]);
+	?>
 	<div class="container-block">
 		<?php
 			get_template_part('template-parts/news-from-category', null, [
