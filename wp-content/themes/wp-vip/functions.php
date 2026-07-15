@@ -139,8 +139,4 @@ function theme_print_css_variables()
 }
 
 add_action('wp_enqueue_scripts', 'theme_print_css_variables', 20);
-
-add_action('wp_head', function () {
-    echo "<!-- HOME: " . home_url() . " -->";
-    echo "<!-- SITE: " . site_url() . " -->";
-});
+ 
