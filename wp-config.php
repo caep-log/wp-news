@@ -128,6 +128,18 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 	eval($configExtra);
 }
 
+if (isset($_SERVER['HTTP_HOST']) && str_contains($_SERVER['HTTP_HOST'], 'trycloudflare.com')) {
+    $_SERVER['HTTPS'] = 'on';
+
+    define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+    define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
+}
+
+if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+    define('WP_HOME', 'https://' . $_SERVER['HTTP_X_FORWARDED_HOST']);
+    define('WP_SITEURL', 'https://' . $_SERVER['HTTP_X_FORWARDED_HOST']);
+}
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
